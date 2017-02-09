@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="WPFSandbox.Holes.AddEditHoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFSandbox.Holes"
+             xmlns:converters="clr-namespace:WPFSandbox.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:NegatableBooleanToVisibilityConverter x:Key="VisConverter"/>
+        <converters:NegatableBooleanToVisibilityConverter x:Key="NegVisConverter"
+                                                    Negate="True"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "Auto" />
+            <RowDefinition Height = "Auto" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid1"
+              Background="DarkGreen"
+              DataContext="{Binding Hole}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
+            <TextBox x:Name="numberTextBox" 
+                     Width="120" VerticalAlignment="Center" 
+                     Text="{Binding Number, Mode=TwoWay, ValidatesOnNotifyDataErrors=True}" 
+                     Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Par:"/>
+            <TextBox x:Name="parTextBox" Width="120" VerticalAlignment="Center" 
+                     Text="{Binding Par, ValidatesOnNotifyDataErrors=True}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Yardage:"/>
+            <TextBox x:Name="yardageTextBox" Width="120" VerticalAlignment="Center" 
+                     Text="{Binding Yardage, Mode=TwoWay, ValidatesOnNotifyDataErrors=True}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Handicap:"/>
+            <TextBox x:Name="handicapTextBox" Width="120" VerticalAlignment="Center"
+                     Text="{Binding Handicap, ValidatesOnNotifyDataErrors=True}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Content="Save"
+                    Command="{Binding SaveCommand}"
+
+                    HorizontalAlignment="Left"
+                    Margin="25,5,0,0"
+                    VerticalAlignment="Top"
+                    Width="75"/>
+            <Button Content="Add"
+                    Command="{Binding SaveCommand}"
+
+                    HorizontalAlignment="Left"
+                    Margin="25,5,0,0"
+                    VerticalAlignment="Top"
+                    Width="75"/>
+            
+            <Button Content="Cancel"
+                    Command="{Binding CancelCommand}"
+                    HorizontalAlignment="Left"
+                    Margin="150,5,0,0"
+                    VerticalAlignment="Top"
+                    Width="75"/>
+        </Grid>
+    </Grid>
+</UserControl>

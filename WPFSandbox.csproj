@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{343DD253-791C-4770-B99C-7437BE8750EF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFSandbox</RootNamespace>
+    <AssemblyName>WPFSandbox</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>D:\Nuget\Packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BindableBase.cs" />
+    <Compile Include="Converters\NegatableBooleanToVisibilityConverter.cs" />
+    <Compile Include="CourseStat.cs" />
+    <Compile Include="Courses\AddEditCourseListView.xaml.cs">
+      <DependentUpon>AddEditCourseListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\AddEditCourseListViewModel.cs" />
+    <Compile Include="Courses\AddEditCourseStatView.xaml.cs">
+      <DependentUpon>AddEditCourseStatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\AddEditCourseStatViewModel.cs" />
+    <Compile Include="Courses\CourseListView.xaml.cs">
+      <DependentUpon>CourseListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\CourseListViewModel.cs" />
+    <Compile Include="Courses\CourseStatListView.xaml.cs">
+      <DependentUpon>CourseStatListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\CourseStatListViewModel.cs" />
+    <Compile Include="Courses\SimpleEditableCourse.cs" />
+    <Compile Include="Courses\SimpleEditableCourseStat.cs" />
+    <Compile Include="DataAccess\Dal.cs" />
+    <Compile Include="HoleStats\AddEditHoleStatView.xaml.cs">
+      <DependentUpon>AddEditHoleStatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HoleStats\AddEditHoleStatViewModel.cs" />
+    <Compile Include="HoleStats\HoleStat.cs" />
+    <Compile Include="HoleStats\HoleStatView.xaml.cs">
+      <DependentUpon>HoleStatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HoleStats\HoleStatViewModel.cs" />
+    <Compile Include="HoleStats\SimpleEditableHoleStat.cs" />
+    <Compile Include="Holes\AddEditHoleView.xaml.cs">
+      <DependentUpon>AddEditHoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Holes\AddEditHoleViewModel.cs" />
+    <Compile Include="Holes\HoleListView.xaml.cs">
+      <DependentUpon>HoleListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Holes\HoleListViewModel.cs" />
+    <Compile Include="Holes\SimpleEditableHole.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Players\AddEditPlayerView.xaml.cs">
+      <DependentUpon>AddEditPlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Players\AddEditPlayerViewModel.cs" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\PlayerListView.xaml.cs">
+      <DependentUpon>PlayerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Players\PlayerListViewModel.cs" />
+    <Compile Include="Players\SimpleEditablePlayer.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Rounds\AddEditRoundView.xaml.cs">
+      <DependentUpon>AddEditRoundView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rounds\AddEditRoundViewModel.cs" />
+    <Compile Include="Rounds\Round.cs" />
+    <Compile Include="Rounds\RoundListView.xaml.cs">
+      <DependentUpon>RoundListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rounds\RoundListViewModel.cs" />
+    <Compile Include="Rounds\SimpleEditableRound.cs" />
+    <Compile Include="ValidatableBindableBase.cs" />
+    <Page Include="Courses\AddEditCourseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Courses\AddEditCourseStatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Courses\CourseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Courses\CourseStatListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HoleStats\AddEditHoleStatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HoleStats\HoleStatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Holes\AddEditHoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Holes\HoleListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Course.cs" />
+    <Compile Include="Hole.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Players\AddEditPlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Players\PlayerListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rounds\AddEditRoundView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rounds\RoundListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Course.datasource" />
+    <None Include="Properties\DataSources\Hole.datasource" />
+    <None Include="Properties\DataSources\WPFSandbox.HoleStats.HoleStat.datasource" />
+    <None Include="Properties\DataSources\WPFSandbox.Rounds.Round.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

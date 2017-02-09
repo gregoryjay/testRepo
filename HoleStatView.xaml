@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="WPFSandbox.HoleStats.HoleStatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFSandbox.HoleStats"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadHoleStats"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Button Content="Add Score"
+                    Command="{Binding AddHoleStatCommand}"
+                    HorizontalAlignment="Left"/>
+        </Grid>
+        <DataGrid ItemsSource="{Binding Path = HoleStats}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding HoleId}"
+                                Width="*"
+                                    Header="HoleId"/>
+                <DataGridTextColumn Binding="{Binding Score}"
+                                Width="*"
+                                     Header="Score"/>
+                <DataGridTextColumn Binding="{Binding Gir}"
+                                Width="*"
+                                     Header="GIR"/>
+                <DataGridTextColumn Binding="{Binding FwyHit}"
+                                Width="*"
+                                     Header="FwyHit"/>
+                <DataGridTextColumn Binding="{Binding Putts}"
+                                Width="*"
+                                     Header="Putts"/>
+              
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content ="Edit"
+                                Command="{Binding DataContext.EditCourseStatCommand,
+                            RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                CommandParameter="{Binding}"
+                                Margin="5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
