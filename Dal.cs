@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using WPFSandbox.Courses;
+using WPFSandbox.Holes;
 using WPFSandbox.HoleStats;
 using WPFSandbox.Players;
 using WPFSandbox.Rounds;
@@ -34,6 +36,17 @@ namespace WPFSandbox.DataAccess
         internal void UpdateHoleStat(HoleStat _editingHoleStat)
         {
             throw new NotImplementedException();
+        }
+
+        internal IEnumerable<RoundStat> GetRoundStats(int roundId)
+        {
+            using (_dbConnection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ROUND_ID", roundId);
+
+                return _dbConnection.Query<RoundStat>("dbo.USP_GET_ROUND_STATS", parameters, commandType: CommandType.StoredProcedure);
+            }
         }
 
         internal IEnumerable<HoleStat> GetHoleStats(int roundId)
